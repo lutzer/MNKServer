@@ -7,3 +7,5 @@ tests/import/*
 log/*
 config.js
 !.keep
+
+npm-debug.log
