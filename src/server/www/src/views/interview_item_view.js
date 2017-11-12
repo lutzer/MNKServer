@@ -29,7 +29,7 @@ class SubmissionItemView extends Marionette.ItemView {
             tags : _.unique(_.flatten(_.pluck(this.model.get('attachments'),"tags"))),
             backgroundImage : this.getBackgroundImageString(),
             first : function(array,n) {
-                return _.first(array,n) 
+                return _.first(array,n)
             }
 		}
     }
@@ -55,7 +55,7 @@ class SubmissionItemView extends Marionette.ItemView {
     getBackgroundImageString() {
         var filesUrl = Config.files_url + this.model.get('_id') + '/';
         if (!this.model.get('image'))
-            return "";
+            return "style=\"background-image: url('images/placeholder.jpg')\"";
         else
             return "style=\"background-image: url('"+filesUrl+this.model.get('image').name+"')\"";
     }

@@ -6,7 +6,7 @@
 		width:100%;
 		background-color: #fff;
 	}
-	
+
 	.link-back {
 		position:fixed;
 		display:block;
@@ -19,5 +19,11 @@
 		left:0;
 		right:0;
 		font-size: 140%;
+	}
+
+	.right {
+		float:right;
+		margin-top: -50px;
+		padding: $text-margin;
 	}
 }

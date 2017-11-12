@@ -1,11 +1,13 @@
 <div class="interview-image">
 	<% if (image) { %>
 	<img src="<%= filesUrl+image.name %>">
+	<% } else { %>
+	<img src="images/placeholder.jpg"
 	<% } %>
 </div>
 
 <div class="interview-content" >
-	<p class="date"><%= formatDate(createdAt) %></p>
+	<p class="date"></p>
 	<h2><%= name %></h2>
 	<p class="role"><%= role %></p>
 	<div class="line-horizontal"></div>
@@ -13,5 +15,5 @@
 </div>
 
 <div id="attachment-list">
-	
+
 </div>
