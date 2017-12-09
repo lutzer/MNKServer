@@ -26,6 +26,9 @@ class Interview extends BaseModel {
         attributes.role = _.has(data,'role') ? data.role : "";
         attributes.image = _.has(data,'image') ? data.image : false;
 
+        // dont show by default
+        attributes.visible = _.has(data,'visible') ? data.visible : false;
+
         // create new date
         attributes.createdAt = _.has(data,'createdAt') ? data.createdAt : new Date();
 
@@ -58,7 +61,7 @@ class Interview extends BaseModel {
             });
         });
 
-        
+
     }
 
     attachImage(image) {

@@ -38,7 +38,7 @@ body {
 			list-style-type: none;
 		}
 
-		li { 
+		li {
 			padding: $spacing;
 			float: right;
 		}
@@ -78,7 +78,7 @@ body {
 
 
 /* TEXT */
-	
+
 h1 {
 	display: inline-block;
 	font-size: 100%;
@@ -119,7 +119,7 @@ label {
 	font-weight: bold;
 }
 
-.label {
+.label,.checkbox-label  {
 	font-size: 100%;
 	font-weight: bold;
 }
@@ -148,7 +148,7 @@ button {
 	color: #000;
 	letter-spacing: 0.05em;
 	font-weight: normal;
-}	
+}
 
 .button-bar {
 	text-align: center;
@@ -157,7 +157,7 @@ button {
 
 .bold {
 	font-weight: bold;
-} 
+}
 
 
 .line {
@@ -202,6 +202,11 @@ input,textarea {
 	outline: none;
 	padding: $small-spacing;
 	@include box-sizing(border-box);
+
+	&[type='checkbox'] {
+		width: auto;
+		margin: $spacing 0;
+	}
 }
 
 textarea {
@@ -214,3 +219,6 @@ label {
 	font-weight: bold;
 }
 
+.visibility-image {
+	width:20px;
+}

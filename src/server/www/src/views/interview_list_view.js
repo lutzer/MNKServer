@@ -47,7 +47,10 @@ class SubmissionListView extends Marionette.CompositeView {
 
 		if (options.tag != null)
 			this.fetchParams.tag = options.tag
-		
+
+		// filter out invisible results
+		this.fetchParams.visible = true;
+
 		this.collection = new InterviewCollection();
 
         this.listenTo(this.collection,'sync',this.hideSpinner);
@@ -77,16 +80,22 @@ class SubmissionListView extends Marionette.CompositeView {
 	// update model on data change
     onInterviewChanged(data) {
     	var model = this.collection.get(data._id);
-    	if (model)
-    		model.fetch();
+    	if (model) {
+			if (model.get("visible"))
+    			model.fetch();
+		} else if (data.visible == false) {
+			this.collection.remove(data._id);
+		}
+
     }
 
     onInterviewAdded(data) {
         //console.log(data);
     	var interview = new InterviewModel(data);
     	interview.fetch();
-    	 // add to front of collection
-		this.collection.add(interview, { at: 0});
+		if (interview.get("visible") == true)
+    	 	// add to front of collection
+			this.collection.add(interview, { at: 0});
     }
 
     onInterviewRemoved(data) {
@@ -112,7 +121,7 @@ class SubmissionListView extends Marionette.CompositeView {
     showSpinner() {
         this.$('#fetch-spinner').removeClass('hidden');
     }
-    
+
     hideSpinner() {
         this.$('#fetch-spinner').addClass('hidden');
     }

@@ -16,14 +16,15 @@ class InterviewModel extends Backbone.Model {
 
 	get idAttribute() { return '_id' }
 
-	get defaults() { 
+	get defaults() {
 		return {
 	    	image: false,
 	    	text: '',
 	    	name: '',
 	    	role: '',
 	    	attachments: [],
-	    	createdAt: 0
+	    	createdAt: 0,
+			visible: false
 		}
 	}
 

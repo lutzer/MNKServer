@@ -15,17 +15,19 @@ var router = express.Router();
 
 /*
  * GET /api/interviews/
- */ 
+ */
 router.get('/',(req,res) => {
 
     //get query options
-    var options = {}
+    var options = {};
 
     // pagination options
     if (_.has(req.query,'limit'))
         options.limit = parseInt(req.query.limit);
     if (_.has(req.query,'skip'))
         options.skip = parseInt(req.query.skip);
+    if (_.has(req.query,'visible'))
+        options.visible = req.query.visible == "true";
 
     // start query
     var interviews = null;
@@ -56,7 +58,7 @@ router.get('/',(req,res) => {
 
 /*
  * GET /api/interviews/:id
- */ 
+ */
 router.get('/:id',(req,res) => {
     var interview = null;
     Interview.get(req.params.id).then( doc => {
@@ -77,7 +79,7 @@ router.get('/:id',(req,res) => {
 
 /*
  * POST /api/interviews/
- */ 
+ */
 router.post('/', (req, res) => {
 
     var interview = new Interview(req.body);
@@ -97,7 +99,7 @@ router.post('/', (req, res) => {
  * PUT /api/interviews/:id with AUTH
  */
 router.put('/:id', Auth.authentificate, (req, res) => {
- 
+
     var data = req.body;
 
     //insert data

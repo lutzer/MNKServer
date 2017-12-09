@@ -31,7 +31,7 @@ class InterviewView extends Marionette.LayoutView {
       }
     }
 
-   regions() { 
+   regions() {
       return {
         attachments : '#interview-attachments'
       }
@@ -56,7 +56,7 @@ class InterviewView extends Marionette.LayoutView {
             this.model = new InterviewModel({ _id: options.id });
             this.model.fetch();
         }
-        
+
         //listen to model events
         this.listenTo(this.model,'change',this.render);
     }
@@ -69,7 +69,7 @@ class InterviewView extends Marionette.LayoutView {
         this.saveModel( (error) => {
             if (error)
                 alert(error);
-            else 
+            else
                 window.location.href = "#interview/"+this.model.id;
 
         });
@@ -95,14 +95,18 @@ class InterviewView extends Marionette.LayoutView {
             else
                 alert("File was successfully uploaded");
                 this.model.fetch();
-        });   
+        });
     }
 
     saveModel(callback) {
-        this.model.set({ 
+
+        console.log(this.$("#input-visible").is(":checked"));
+
+        this.model.set({
             name : this.$("#input-name").val(),
             role : this.$("#input-role").val(),
-            text : this.$("#input-text").val()
+            text : this.$("#input-text").val(),
+            visible : this.$("#input-visible").is(":checked")
         });
 
         this.model.save(null, {
@@ -114,7 +118,7 @@ class InterviewView extends Marionette.LayoutView {
             }
         });
     }
-    
+
 }
 
 export default InterviewView

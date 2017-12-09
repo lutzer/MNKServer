@@ -13,10 +13,14 @@
 	<label>Text</label>
 	<textarea id="input-text"><%= text %></textarea>
 </div>
+<div class="input-element">
+	<input id="input-visible" type="checkbox" <% if (visible) { %>checked<% } %>>
+	<span class="checkbox-label">Visible<span>
+</div>
 
 <% if (!isNew) { %>
 <div class="input-element center">
-	<label>Image</label>	
+	<label>Image</label>
 	<% if (image) { %>
 	<img src="<%= filesUrl+image.name %>">
 	<% } else { %>

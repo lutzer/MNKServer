@@ -28,7 +28,7 @@ class BaseModel {
 		return data;
 	}
 
-	
+
 	get collection() {
 		return this.constructor.collection;
 	}
@@ -45,18 +45,18 @@ class BaseModel {
 				this.constructor.update(this.data).then( doc => {
 					this.data = doc
 					resolve(doc);
-				}).catch( error => {	
+				}).catch( error => {
 					reject(err);
 				});
 			} else {
 				this.constructor.create(this.data).then( doc => {
 					this.data = doc[0]
 					resolve(doc[0]);
-				}).catch( error => {	
+				}).catch( error => {
 					reject(err);
 				});
 			}
-		});	
+		});
 	}
 
 	fetch() {
@@ -64,7 +64,7 @@ class BaseModel {
 			this.constructor.get(this.data._id).then( doc => {
 				this.data = doc;
 				resolve(doc);
-			}).catch( error => {	
+			}).catch( error => {
 				reject(err);
 			});
 		});
@@ -105,11 +105,11 @@ class BaseModel {
     	data = _.map(data, (element) => {
 	        // validate fields
 	        let attributes = self.validate(element);
-	        
+
 	        // create new id
 	        if (!importData)
 	        	attributes._id = uuid.v4();
-	    	
+
 	    	return attributes;
 	    });
 
@@ -168,7 +168,7 @@ class BaseModel {
         var db = this.getDb();
 
         return new Promise( (resolve, reject) => {
-        	db[this.collection].findOne({ _id : id }, (err, doc) => {
+        	db[this.collection].findOne({ _id : id}, (err, doc) => {
         		if (err) {
         			reject(err);
         		} else {

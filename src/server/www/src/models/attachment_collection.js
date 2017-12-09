@@ -16,6 +16,17 @@ class AttachmentCollection extends Backbone.Collection {
 	get url() { return Config['web_service_url']+"attachments" }
 
 	get model() { return AttachmentModel }
+
+	fetch(options) {
+		return Backbone.Collection.prototype.fetch.call(this,options);
+    }
+
+	parse(response) {
+		var filtered = _.filter(response, (doc) => {
+			return doc.interview.visible;
+		});
+        return filtered;
+	}
 };
 
 export default AttachmentCollection

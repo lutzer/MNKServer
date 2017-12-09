@@ -1,5 +1,10 @@
 <h3><%= name %></h3>
 <p style="text-align: center"><%= role %></p>
+<p style="text-align: center">
+	<% if (!visible) { %>
+	<img class="visibility-image" src="images/visibility_off.png">
+	<% } %>
+</p>
 <p class="button-bar">
 	<button id="editButton">EDIT</button>
 </p>

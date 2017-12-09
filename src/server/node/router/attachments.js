@@ -22,7 +22,7 @@ var router = express.Router();
 
 /*
  * GET /api/attachments/
- */ 
+ */
 router.get('/',(req,res) => {
 
     var options = {}
@@ -49,7 +49,7 @@ router.get('/',(req,res) => {
 
 /*
  * GET /api/attachments/:id
- */ 
+ */
 router.get('/:id',(req,res) => {
     Attachment.get(req.params.id).then( (doc) => {
         if (_.isEmpty(doc))
@@ -65,7 +65,7 @@ router.get('/:id',(req,res) => {
 
 /*
  * POST /api/attachments/
- */ 
+ */
 router.post('/', (req, res) => {
 
     var attachment = new Attachment(req.body);
@@ -97,7 +97,7 @@ router.post('/', (req, res) => {
  * PUT /api/attachments/:id with AUTH
  */
 router.put('/:id', Auth.authentificate, (req, res) => {
- 
+
     var data = req.body;
 
     var attachment = new Attachment(data);

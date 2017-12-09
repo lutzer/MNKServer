@@ -36,7 +36,7 @@ class InterviewCollection extends Backbone.Collection {
 
 	fetch(options) {
 		this.trigger('fetching');
-		return Backbone.Collection.prototype.fetch.call(this,options);      
+		return Backbone.Collection.prototype.fetch.call(this,options);
     }
 
 	getFirstPage(options={}) {
